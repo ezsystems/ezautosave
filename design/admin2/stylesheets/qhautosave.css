@@ -1,0 +1,14 @@
+#qhautosavecontainer {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+#qhautosavemessage {
+    background-color: #FF8000;
+    margin: auto;
+    padding-bottom: 3px;
+    padding-top: 3px;
+    text-align: center;
+    width: 200px;
+}

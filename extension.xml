@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<software>
+    <metadata>
+        <name>QH AutoSave</name>
+        <version>1.0beta</version>
+        <copyright>Copyright (C) 2011 NGUYEN DINH Quoc-Huy</copyright>
+        <license>GNU General Public License v2.0</license>
+    </metadata>
+
+    <dependencies>
+        <requires>
+            <extension name="ezjscore" />
+            <extension name="ezwebin" />
+	    <extension name="ezoe" />
+	</requires>
+    </dependencies>
+
+</software>
