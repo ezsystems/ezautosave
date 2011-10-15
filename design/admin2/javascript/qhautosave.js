@@ -1,7 +1,7 @@
 var qhAutosaveFormContent = "";
 var qhAutosaveEditForm = "";
 var qhAutosaveInterval = 15000;
-var qhAutosaveWarnOnUnload = true;
+var qhAutosaveStop = false;
 
 $(document).ready(function() {
     // Display a warning if the user leaves the page
@@ -21,7 +21,12 @@ $(document).ready(function() {
         if( $(this).hasClass( 'button' ) ||
             $(this).hasClass( 'defaultbutton' )
           ) {
+              // When a button is clicked
               $(this).click( function() {
+                  // Do not autosave 
+                  qhAutosaveStop = false;
+
+                  // Do not warn of leaving the page
                   $(window).unbind( 'beforeunload' );
               }); 
 	} 
@@ -43,31 +48,33 @@ $(document).ready(function() {
 });
 
 function qhAutosave() {
-    $( '#qhautosavemessage' ).html( 'Autosaving...' );
-    $( '#qhautosavecontainer' ).css( 'opacity', 100 );
+    if( !qhAutosaveStop ) {
+        $( '#qhautosavemessage' ).html( 'Autosaving...' );
+        $( '#qhautosavecontainer' ).css( 'opacity', 100 );
 
-    // Tells tinyMCE to save the content of each XML Block back to their HMTL Input field
-    tinyMCE.triggerSave();
+        // Tells tinyMCE to save the content of each XML Block back to their HMTL Input field
+        tinyMCE.triggerSave();
 
-    // Retreiving form posting info
-    var formMethod = qhAutosaveEditForm.attr('method').toLowerCase();
-    var postURL = qhAutosaveEditForm.attr('action');
+        // Retreiving form posting info
+        var formMethod = qhAutosaveEditForm.attr('method').toLowerCase();
+        var postURL = qhAutosaveEditForm.attr('action');
 
-    // Preparing the content and setting the action to store as a draft
-    var formContent = qhAutosaveEditForm.serialize() + '&StoreButton=Store+draft';
+        // Preparing the content and setting the action to store as a draft
+        var formContent = qhAutosaveEditForm.serialize() + '&StoreButton=Store+draft';
 
-    // Only save if there are changes from the last autosave process
-    if( formContent != qhAutosaveFormContent ) {
-        $[formMethod](postURL, formContent, function(data){
-            $( '#qhautosavemessage' ).html( 'Autosave done!' );
-            qhAutosaveFormContent = formContent;
-            setTimeout( "qhAutosaveHideMessage()", 1000 ); 
-        });
-        return true;
-    } else {
-	$( '#qhautosavemessage' ).html( 'No changes!' );
-        setTimeout( "qhAutosaveHideMessage()", 1000 );
-        return false;
+        // Only save if there are changes from the last autosave process
+        if( formContent != qhAutosaveFormContent ) {
+            $[formMethod](postURL, formContent, function(data){
+                $( '#qhautosavemessage' ).html( 'Autosave done!' );
+                qhAutosaveFormContent = formContent;
+                setTimeout( "qhAutosaveHideMessage()", 1000 ); 
+            });
+            return true;
+        } else {
+	    $( '#qhautosavemessage' ).html( 'No changes!' );
+            setTimeout( "qhAutosaveHideMessage()", 1000 );
+            return false;
+        }
     }
 }
 
