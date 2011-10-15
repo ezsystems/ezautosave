@@ -1,47 +1,76 @@
 var qhAutosaveFormContent = "";
 var qhAutosaveEditForm = "";
 var qhAutosaveInterval = 15000;
+var qhAutosaveWarnOnUnload = true;
 
 $(document).ready(function() {
+    // Display a warning if the user leaves the page
+    $(window).bind( "beforeunload", function( event ) {
+        // Attempt to autosave
+        var autosaved = qhAutosave();
+
+        // This might not work on all browsers as some are preventing
+        // JS to continue running while displaying the message
+        // The message returned might not be displayed with some browsers
+        if( autosaved ) return "You have unsaved changes.";
+        return "A draft will be left for this object.";
+    });
+
+    // If the user clicks on a button, then don't warn them of unsaved changes 
+    $( 'input' ).each( function() {
+        if( $(this).hasClass( 'button' ) ||
+            $(this).hasClass( 'defaultbutton' )
+          ) {
+              $(this).click( function() {
+                  $(window).unbind( 'beforeunload' );
+              }); 
+	} 
+    });
+
+    // If we are in an edit form
     if( $( '#editform' ).length > 0 ) {
 	tinyMCE.triggerSave();
 
 	qhAutosaveEditForm = $( '#editform' );
 
+        // Inject the autosave status div
         $( '#page' ).prepend( '<div id="qhautosavecontainer"><div id="qhautosavemessage"></div></div>' );
         $( '#qhautosavecontainer' ).css( 'opacity', 0 );
 
-	if( qhAutosaveFormContent == "" ) setTimeout( "autosave()", 5000 ); 
-	setInterval( "autosave()", qhAutosaveInterval );
+        // Set the automatic saving feature
+	setInterval( "qhAutosave()", qhAutosaveInterval );
     }
 });
 
-function autosave() {
+function qhAutosave() {
     $( '#qhautosavemessage' ).html( 'Autosaving...' );
     $( '#qhautosavecontainer' ).css( 'opacity', 100 );
 
+    // Tells tinyMCE to save the content of each XML Block back to their HMTL Input field
     tinyMCE.triggerSave();
 
+    // Retreiving form posting info
     var formMethod = qhAutosaveEditForm.attr('method').toLowerCase();
     var postURL = qhAutosaveEditForm.attr('action');
+
+    // Preparing the content and setting the action to store as a draft
     var formContent = qhAutosaveEditForm.serialize() + '&StoreButton=Store+draft';
 
-    if( qhAutosaveFormContent == "" ) {
-            $( '#qhautosavemessage' ).html( 'Initializing autosave...' );
-	    qhAutosaveFormContent = qhAutosaveEditForm.serialize() + '&StoreButton=Store+draft';
-            setTimeout( "destroyAutosaveMessage()", 1000 );
-    } else if( formContent != qhAutosaveFormContent ) {
+    // Only save if there are changes from the last autosave process
+    if( formContent != qhAutosaveFormContent ) {
         $[formMethod](postURL, formContent, function(data){
             $( '#qhautosavemessage' ).html( 'Autosave done!' );
             qhAutosaveFormContent = formContent;
-            setTimeout( "destroyAutosaveMessage()", 1000 ); 
+            setTimeout( "qhAutosaveHideMessage()", 1000 ); 
         });
+        return true;
     } else {
 	$( '#qhautosavemessage' ).html( 'No changes!' );
-        setTimeout( "destroyAutosaveMessage()", 1000 );
+        setTimeout( "qhAutosaveHideMessage()", 1000 );
+        return false;
     }
 }
 
-function destroyAutosaveMessage() {
+function qhAutosaveHideMessage() {
     $( '#qhautosavecontainer' ).animate({opacity: 0}, 400);
 }
