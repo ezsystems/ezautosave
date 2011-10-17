@@ -4,18 +4,6 @@ var qhAutosaveInterval = 15000;
 var qhAutosaveStop = false;
 
 $(document).ready(function() {
-    // Display a warning if the user leaves the page
-    $(window).bind( "beforeunload", function( event ) {
-        // Attempt to autosave
-        var autosaved = qhAutosave();
-
-        // This might not work on all browsers as some are preventing
-        // JS to continue running while displaying the message
-        // The message returned might not be displayed with some browsers
-        if( autosaved ) return "You have unsaved changes.";
-        return "A draft will be left for this object.";
-    });
-
     // If the user clicks on a button, then don't warn them of unsaved changes 
     $( 'input' ).each( function() {
         if( $(this).hasClass( 'button' ) ||
@@ -27,7 +15,7 @@ $(document).ready(function() {
                   qhAutosaveStop = false;
 
                   // Do not warn of leaving the page
-                  $(window).unbind( 'beforeunload' );
+                  if( qhBeforeUnload ) $(window).unbind( 'beforeunload' );
               }); 
 	} 
     });
