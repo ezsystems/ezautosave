@@ -43,6 +43,9 @@ class qhASServerFunctions extends ezjscServerFunctions
         $ini = eZINI::instance( 'qhautosave.ini' );
         $qhAutosaveConfig = array();
 
+	/*
+	 * Loading INI settings
+	 */
         if( $ini->hasVariable( 'AutosaveSettings', 'AutosaveInterval' ) )
                 $qhAutosaveConfig['autosave_interval'] = $ini->variable( 'AutosaveSettings', 'AutosaveInterval' );
                 else $qhAutosaveConfig['autosave_interval'] = 15000;
@@ -51,12 +54,25 @@ class qhASServerFunctions extends ezjscServerFunctions
                 $qhAutosaveConfig['warn_on_unload'] = ( $ini->variable( 'AutosaveSettings', 'WarnOnUnload' ) == 'enabled' ? true : false );
                 else $qhAutosaveConfig['warn_on_unload'] = true;
 
+	if( $ini->hasVariable( 'AutosaveSettings', 'NotificationMethod' ) )
+                $qhAutosaveConfig['notification_method'] = $ini->variable( 'AutosaveSettings', 'NotificationMethod' );
+                else $qhAutosaveConfig['notification_method'] = 'pulsing_bar';
+
+	/*
+	 * Making sure to always have a value
+	 */
         if( empty( $qhAutosaveConfig[ 'autosave_interval' ] ) )
                 $qhAutosaveConfig[ 'autosave_interval' ] = 15000;
 
         if( !is_bool( $qhAutosaveConfig['warn_on_unload'] ) )
                 $qhAutosaveConfig['warn_on_unload'] = true;
+
+	if( empty( $qhAutosaveConfig['notification_method'] ) )
+		$qhAutosaveConfig['notification_method'] = 'pulsing_bar';
         
+	/*
+	 * Encode in JSON format
+	 */
         $jsOutput = json_encode( $qhAutosaveConfig );
 
         return $jsOutput;
