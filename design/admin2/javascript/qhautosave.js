@@ -13,37 +13,37 @@ $(document).ready(function() {
     // Load the config from qhautosave.ini via ezjscore in JSON format
     $.ez( 'qhautosave::configload', '', function( ezp_data ) {
 
-	// If any error
-	if ( ezp_data.error_text ) {
-		console.log( 'ezjscore ajax error, using default setting values' );
-	} else {
-		qh_autosave_config = jQuery.parseJSON( ezp_data.content );
+    // If any error
+    if ( ezp_data.error_text ) {
+        console.log( 'ezjscore ajax error, using default setting values' );
+    } else {
+        qh_autosave_config = jQuery.parseJSON( ezp_data.content );
 
-		if( typeof qh_autosave_config.autosave_interval == 'number' && qh_autosave_config.autosave_interval > 1000 ) {
-			qh_autosave_interval = qh_autosave_config.autosave_interval;
-		}
+        if( typeof qh_autosave_config.autosave_interval == 'number' && qh_autosave_config.autosave_interval > 1000 ) {
+            qh_autosave_interval = qh_autosave_config.autosave_interval;
+        }
 
-		if( typeof qh_autosave_config.warn_on_unload == 'boolean' ) {
-			qh_warn_on_unload = qh_autosave_config.warn_on_unload;
-        	}
-	}
+        if( typeof qh_autosave_config.warn_on_unload == 'boolean' ) {
+            qh_warn_on_unload = qh_autosave_config.warn_on_unload;
+            }
+    }
 
-	// Start the automatic saving feature
+    // Start the automatic saving feature
         setInterval( "qhAutosave()", qh_autosave_interval );
 
-	if( qh_warn_on_unload ) {
-		// Display a warning if the user leaves the page
-    		$(window).bind( "beforeunload", function( event ) {
-        		// Attempt to autosave
-        		var autosaved = qhAutosave();
+    if( qh_warn_on_unload ) {
+        // Display a warning if the user leaves the page
+            $(window).bind( "beforeunload", function( event ) {
+                // Attempt to autosave
+                var autosaved = qhAutosave();
 
-        		// This might not work on all browsers as some are preventing
-        		// JS to continue running while displaying the message
-        		// The message returned might not be displayed with some browsers
-        		if( autosaved ) return "You have unsaved changes.";
-        			return "A draft will be left for this object.";
-    		});
-	}
+                // This might not work on all browsers as some are preventing
+                // JS to continue running while displaying the message
+                // The message returned might not be displayed with some browsers
+                if( autosaved ) return "You have unsaved changes.";
+                    return "A draft will be left for this object.";
+            });
+    }
     });
 
     // If the user clicks on a button, then don't warn them of unsaved changes 
@@ -59,14 +59,14 @@ $(document).ready(function() {
                   // Do not warn of leaving the page
                   if( qh_warn_on_unload ) $(window).unbind( 'beforeunload' );
               }); 
-	} 
+    } 
     });
 
     // If we are in an edit form
     if( $( '#editform' ).length > 0 ) {
-	tinyMCE.triggerSave();
+    tinyMCE.triggerSave();
 
-	qh_autosave_edit_form = $( '#editform' );
+    qh_autosave_edit_form = $( '#editform' );
 
         // Inject the autosave status div
         $( '#page' ).prepend( '<div id="qhautosavecontainer"><div id="qhautosavemessage"></div></div>' );
@@ -99,7 +99,7 @@ function qhAutosave() {
             });
             return true;
         } else {
-	    $( '#qhautosavemessage' ).html( 'No changes!' );
+        $( '#qhautosavemessage' ).html( 'No changes!' );
             setTimeout( "qhAutosaveHideMessage()", 1000 );
             return false;
         }

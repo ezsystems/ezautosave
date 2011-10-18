@@ -41,22 +41,22 @@ class qhASServerFunctions extends ezjscServerFunctions
     public static function configload()
     {
         $ini = eZINI::instance( 'qhautosave.ini' );
-	$qhAutosaveConfig = array();
+        $qhAutosaveConfig = array();
 
-	if( $ini->hasVariable( 'AutosaveSettings', 'AutosaveInterval' ) )
-		$qhAutosaveConfig['autosave_interval'] = $ini->variable( 'AutosaveSettings', 'AutosaveInterval' );
-		else $qhAutosaveConfig['autosave_interval'] = 15000;
+        if( $ini->hasVariable( 'AutosaveSettings', 'AutosaveInterval' ) )
+                $qhAutosaveConfig['autosave_interval'] = $ini->variable( 'AutosaveSettings', 'AutosaveInterval' );
+                else $qhAutosaveConfig['autosave_interval'] = 15000;
 
-	if( $ini->hasVariable( 'AutosaveSettings', 'WarnOnUnload' ) )
-		$qhAutosaveConfig['warn_on_unload'] = ( $ini->variable( 'AutosaveSettings', 'WarnOnUnload' ) == 'enabled' ? true : false );
-		else $qhAutosaveConfig['warn_on_unload'] = true;
+        if( $ini->hasVariable( 'AutosaveSettings', 'WarnOnUnload' ) )
+                $qhAutosaveConfig['warn_on_unload'] = ( $ini->variable( 'AutosaveSettings', 'WarnOnUnload' ) == 'enabled' ? true : false );
+                else $qhAutosaveConfig['warn_on_unload'] = true;
 
-	if( empty( $qhAutosaveConfig[ 'autosave_interval' ] ) )
-		$qhAutosaveConfig[ 'autosave_interval' ] = 15000;
+        if( empty( $qhAutosaveConfig[ 'autosave_interval' ] ) )
+                $qhAutosaveConfig[ 'autosave_interval' ] = 15000;
 
-	if( !is_bool( $qhAutosaveConfig['warn_on_unload'] ) )
-		$qhAutosaveConfig['warn_on_unload'] = true;
-	
+        if( !is_bool( $qhAutosaveConfig['warn_on_unload'] ) )
+                $qhAutosaveConfig['warn_on_unload'] = true;
+        
         $jsOutput = json_encode( $qhAutosaveConfig );
 
         return $jsOutput;
