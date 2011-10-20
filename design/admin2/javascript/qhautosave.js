@@ -40,7 +40,7 @@ $(document).ready(function() {
             } else {
                 qh_autosave_config = jQuery.parseJSON( ezp_data.content );
 
-                if( typeof qh_autosave_config.autosave_interval == 'number' && qh_autosave_config.autosave_interval > 1000 )
+                if( typeof parseInt( qh_autosave_config.autosave_interval ) == 'number' && qh_autosave_config.autosave_interval > 1000 )
                     qh_autosave_interval = qh_autosave_config.autosave_interval;
 
                 if( typeof qh_autosave_config.warn_on_unload == 'boolean' )
@@ -51,6 +51,8 @@ $(document).ready(function() {
 
                 if( qh_warn_on_unload )
                     qhAutosaveActivateWarnOnUnload();
+
+		console.log( qh_autosave_interval );
 
 		qhAutosaveInitialize();
             }
