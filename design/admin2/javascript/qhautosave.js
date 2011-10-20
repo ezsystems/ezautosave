@@ -92,7 +92,7 @@ function qhAutosave() {
             qhAutosaveNotify( 'Autosaving...', false );
 
         // Tells tinyMCE to save the content of each XML Block back to their HMTL Input field
-        tinyMCE.triggerSave();
+        if( typeof tinyMCE != 'undefined' ) tinyMCE.triggerSave();
 
         // Retreiving form posting info
         var form_method = qh_autosave_edit_form.attr('method').toLowerCase();
