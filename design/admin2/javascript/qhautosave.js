@@ -52,8 +52,6 @@ $(document).ready(function() {
                 if( qh_warn_on_unload )
                     qhAutosaveActivateWarnOnUnload();
 
-		console.log( qh_autosave_interval );
-
 		qhAutosaveInitialize();
             }
         });
