@@ -7,7 +7,4 @@ DesignExtensions[]=qhautosave
 #FrontendJavaScriptList[]=qhautosave.js
 BackendJavaScriptList[]=qhautosave.js
 
-[StylesheetSettings]
-BackendCSSFileList[]=qhautosave.css
-
 */ ?>

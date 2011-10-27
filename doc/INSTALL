@@ -1,9 +1,9 @@
 Requirements:
-This extension requires ezwebin, ezoe, ezjscore with jQuery
+This extension requires qhjsiniloader, qhnotifications, ezwebin, ezoe, ezjscore with jQuery 1.4.2
 
 Installation:
 Just activate the extension!
 
 Customization:
 - override design/admin2/stylesheets/qhautosave.css for your own styles
-- to disable the onunload warnings, edit/override settings/design.ini.append.php and comment out the call to qhbeforeunload.js
+- override settings/qhjsiniloader.ini.append.php for more options
