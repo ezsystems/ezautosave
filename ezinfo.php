@@ -1,9 +1,9 @@
 <?php
 /**
  * QH AutoSave - content/edit form autosave extension for eZ Publish 
- * Written by Bruce Morrison <bruce@stuffandcontent.com>
- * Copyright (C) 2008. Bruce Morrison.  All rights reserved.
- * http://www.stuffandcontent.com
+ * Written by NGUYEN DINH Quoc-Huy
+ * Copyright (C) 2011. NGUYEN DINH Quoc-Huy. All rights reserved.
+ * http://www.quoc-huy.com
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -25,7 +25,7 @@ class QHAutoSaveInfo
     {
         return array(
             'Name' => "QH AutoSave for eZ Publish",
-            'Version' => "1.0beta3",
+            'Version' => "1.0beta4",
             'Author' => "<a href='http://www.quoc-huy.com/'>Quoc-Huy</a>",
             'Copyright' => "Copyright (C) 2011 Quoc-Huy NGUYEN DINH",
             'License' => "GNU General Public License v2.0"

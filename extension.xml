@@ -9,6 +9,8 @@
 
     <dependencies>
         <requires>
+            <extension name="qhjsiniloader" />
+            <extension name="qhnotifications" />
             <extension name="ezjscore" />
             <extension name="ezwebin" />
 	    <extension name="ezoe" />
