@@ -31,20 +31,28 @@ $(document).ready(function() {
     if( $( '#editform' ).length > 0 ) {
         qh_autosave_edit_form = $( '#editform' );
 
+        // If qhjsiniloader has been activated and loaded
         if( typeof QHJSINILoader != 'undefined' ) {
-           QHJSINILoader.init( 'qhautosave', qhAutosaveInitialize );
+            // Load custom settings
+            QHJSINILoader.init( 'qhautosave', qhAutosaveInitialize );
+        } else {
+            qhAutosaveInitialize();
         }
     }
 });
 
 // Setup the process
 function qhAutosaveInitialize( qh_autosave_config ) {
+    // If not config data is returned from QHJSINILoader, use default values
+    if( typeof qh_autosave_config == 'undefined' ) {
+        qh_autosave_config = {autosave_interval: 15000, warn_on_unload: true};
+    } else { 
+        if( typeof parseInt( qh_autosave_config.autosave_interval ) == 'number' && qh_autosave_config.autosave_interval > 15000 )
+            qh_autosave_interval = qh_autosave_config.autosave_interval;
 
-    if( typeof parseInt( qh_autosave_config.autosave_interval ) == 'number' && qh_autosave_config.autosave_interval > 1000 )
-        qh_autosave_interval = qh_autosave_config.autosave_interval;
-
-    if( typeof qh_autosave_config.warn_on_unload == 'boolean' )
-        qh_warn_on_unload = qh_autosave_config.warn_on_unload;
+        if( typeof qh_autosave_config.warn_on_unload == 'boolean' )
+            qh_warn_on_unload = qh_autosave_config.warn_on_unload;
+    }
 
     if( qh_warn_on_unload )
         qhAutosaveActivateWarnOnUnload();

@@ -1,5 +1,8 @@
 Requirements:
-This extension requires qhjsiniloader, qhnotifications, ezwebin, ezoe, ezjscore with jQuery 1.4.2
+This extension requires qhnotifications, ezwebin, ezoe, ezjscore with jQuery 1.4.2
+
+Recommendations:
+To customize qhautosave's features, please install qhjsiniloader
 
 Installation:
 Just activate the extension!
