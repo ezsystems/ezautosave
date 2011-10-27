@@ -1,7 +1,6 @@
 var qh_autosave_config = "";
 var qh_autosave_interval = 15000;
 var qh_warn_on_unload = true;
-var qh_autosave_notification_method = 'pulsing_bar';
 var notifications = false;
 
 var qh_autosave_form_content = "";
@@ -47,18 +46,10 @@ function qhAutosaveInitialize( qh_autosave_config ) {
     if( typeof qh_autosave_config.warn_on_unload == 'boolean' )
         qh_warn_on_unload = qh_autosave_config.warn_on_unload;
 
-    if( typeof qh_autosave_config.autosave_interval == 'string' )
-        qh_autosave_notification_method = qh_autosave_config.notification_method;
-
     if( qh_warn_on_unload )
         qhAutosaveActivateWarnOnUnload();
 
     notifications = new QHNotifications();
-    notifications.setMessage( {notification_id: 'test', text: 'test message'} );
-    notifications.display();
-
-    if( qh_autosave_notification_method == 'label' )
-        $( '#qhautosavecontainer' ).css( 'opacity', 0 );
 
     // Start the automatic saving feature
     setInterval( "qhAutosave()", qh_autosave_interval );
