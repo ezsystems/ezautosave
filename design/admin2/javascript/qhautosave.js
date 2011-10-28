@@ -7,6 +7,7 @@ var qh_autosave_form_content = "";
 var qh_autosave_edit_form = "";
 
 var qh_autosave_stop = false;
+var qh_autosave_config = {};
 
 // Wait for the DOM to be ready
 $(document).ready(function() {
@@ -42,7 +43,10 @@ $(document).ready(function() {
 });
 
 // Setup the process
-function qhAutosaveInitialize( qh_autosave_config ) {
+function qhAutosaveInitialize( qhjsiniloader_config ) {
+    // Save the config in a global variable
+    qh_autosave_config = qhjsiniloader_config;
+
     // If not config data is returned from QHJSINILoader, use default values
     if( typeof qh_autosave_config == 'undefined' ) {
         qh_autosave_config = {autosave_interval: 15000, warn_on_unload: true};
@@ -62,7 +66,7 @@ function qhAutosaveInitialize( qh_autosave_config ) {
     // Start the automatic saving feature
     setInterval( "qhAutosave()", qh_autosave_interval );
 
-    qhAutosaveNotify( 'Autosave: active' );
+    qhAutosaveNotify( qh_autosave_config.i18n.active );
 }
 
 // Bind the beforeunload event to warn from leaving the page
@@ -83,7 +87,7 @@ function qhAutosaveActivateWarnOnUnload() {
 // Autosave function
 function qhAutosave() {
     if( !qh_autosave_stop ) {
-        qhAutosaveNotify( 'Autosave: in process...' );
+        qhAutosaveNotify( qh_autosave_config.i18n.in_process );
 
         // Tells tinyMCE to save the content of each XML Block back to their HMTL Input field
         if( typeof tinyMCE != 'undefined' ) tinyMCE.triggerSave();
@@ -98,12 +102,12 @@ function qhAutosave() {
         // Only save if there are changes from the last autosave process
         if( form_content != qh_autosave_form_content ) {
             $[form_method](post_url, form_content, function(data){
-                qhAutosaveNotify( 'Autosave: done!' ); 
+                qhAutosaveNotify( qh_autosave_config.i18n.done ); 
                 qh_autosave_form_content = form_content;
             });
             return true;
         } else {
-                qhAutosaveNotify( 'Autosave: No changes!' );
+                qhAutosaveNotify( qh_autosave_config.i18n.no_changes );
             return false;
         }
     }
