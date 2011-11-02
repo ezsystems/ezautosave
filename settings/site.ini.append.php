@@ -1,0 +1,6 @@
+<?php /*
+
+[RegionalSettings]
+TranslationExtensions[]=qhautosave
+
+*/ ?>
