@@ -4,7 +4,7 @@
 DesignExtensions[]=qhautosave
 
 [JavaScriptSettings]
-#FrontendJavaScriptList[]=qhautosave.js
+FrontendJavaScriptList[]=qhautosave.js
 BackendJavaScriptList[]=qhautosave.js
 
 */ ?>

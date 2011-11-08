@@ -1,11 +1,15 @@
 Requirements:
-This extension requires qhnotifications, ezwebin, ezoe, ezjscore with jQuery 1.4.2
+This extension requires qhnotifications, ezwebin, ezoe, ezjscore with jQuery 1.4.2+
 
 Recommendations:
 To customize qhautosave's features, please install qhjsiniloader
 
 Installation:
 Just activate the extension!
+
+Experimental:
+To use with the website tool bar (ezwt):
+- override design/ezwebin/templates/page_head_script.tpl and add array( 'ezjsc::jquery', 'ezjsc::jqueryio' ) to ezscript_load() call 
 
 Customization:
 - override design/admin2/stylesheets/qhautosave.css for your own styles
