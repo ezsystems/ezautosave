@@ -55,7 +55,7 @@ var qhAutoSave = {
             if( typeof tinyMCE != 'undefined' ) tinyMCE.triggerSave();
 
             // Retreiving form posting info
-            var form_method = qhAutoSave.edit_form.attr('mesthod').toLowerCase();
+            var form_method = qhAutoSave.edit_form.attr('method').toLowerCase();
             var post_url = qhAutoSave.edit_form.attr('action');
 
             // Preparing the content and setting the action to store as a draft
