@@ -25,7 +25,7 @@ class QHAutoSaveInfo
     {
         return array(
             'Name' => "QH AutoSave for eZ Publish",
-            'Version' => "1.0beta8",
+            'Version' => "1.0beta9",
             'Author' => "<a href='http://www.quoc-huy.com/'>Quoc-Huy</a>",
             'Copyright' => "Copyright (C) 2011 Quoc-Huy NGUYEN DINH",
             'License' => "GNU General Public License v2.0"
