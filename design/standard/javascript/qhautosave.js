@@ -64,12 +64,12 @@ var qhAutoSave = {
             // Only save if there are changes from the last autosave process
             if( form_content != qhAutoSave.form_content ) {
                 $[form_method](post_url, form_content, function(data){
-                    setTimeout( "qhAutoSave.notify( 'Store draft' )", 500 );
+                    setTimeout( "qhAutoSave.notify( qhAutoSave.config.i18n.store_draft )", 500 );
                     qhAutoSave.form_content = form_content;
                 });
                 return true;
             } else {
-                setTimeout( "qhAutoSave.notify( 'Store draft' )", 500 );
+                setTimeout( "qhAutoSave.notify( qhAutoSave.config.i18n.store_draft )", 500 );
                 return false;
             }
         }
