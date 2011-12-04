@@ -59,7 +59,7 @@ var qhAutoSave = {
     // Autosave function
     autosave: function() {
         if( !qhAutoSave.stop ) {
-            qhAutoSave.notify( qhAutoSave.config.i18n.in_process );
+            qhAutoSave.notify( qhAutoSave.config.i18n.in_progress );
 
             // Tells tinyMCE to save the content of each XML Block back to their HMTL Input field
             if( typeof tinyMCE != 'undefined' ) tinyMCE.triggerSave();
