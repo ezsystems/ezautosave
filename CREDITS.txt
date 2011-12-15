@@ -1,0 +1,2 @@
+The idea and initial implementation came from Quoc Huy NGUYEN DINH, many thanks for this !
+More on his contributions to eZ Publish : http://www.quoc-huy.com/Curriculum-Vitae/eZ-Publish-extensions
