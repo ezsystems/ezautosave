@@ -1,6 +1,6 @@
 <?php /*
 
 [RegionalSettings]
-TranslationExtensions[]=qhautosave
+TranslationExtensions[]=ezautosave
 
 */ ?>

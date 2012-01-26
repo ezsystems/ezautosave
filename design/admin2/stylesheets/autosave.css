@@ -1,0 +1,28 @@
+
+#ez-as-place
+{
+font-size:0.95em;
+display:block;
+padding:2px 0 2px 20px;
+color:#333;
+}
+
+.as-success
+{
+background:url(../../../../../design/admin2/images/2/yui_sprite.png) no-repeat 0 -1199px;
+}
+
+.as-saving
+{
+background:url(../images/as-loader.gif) no-repeat 0 1px;
+}
+
+.as-error
+{
+background:url(../../../../../design/admin2/images/2/yui_sprite.png) no-repeat 0 -1897px;
+}
+
+.as-error span
+{
+border-bottom:1px dashed #999;
+}

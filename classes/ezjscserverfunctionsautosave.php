@@ -25,11 +25,13 @@ class ezjscServerFunctionsAutosave extends ezjscServerFunctions
      */
     static public function saveDraft( $args )
     {
+        header( 'Content-Type: text/plain', true );
         $result = array(
             'unvalidated-attributes' => array(),
             'stored-attributes' => array(),
             'valid' => true,
         );
+        $http = eZHTTPTool::instance();
 
         // workaround to the eZContentObjectEditHandler API that needs a Module
         $Module = false; 
@@ -43,12 +45,21 @@ class ezjscServerFunctionsAutosave extends ezjscServerFunctions
                 )
             );
         }
-        if ( $_SERVER['REQUEST_METHOD'] !== 'POST' || count( $_POST ) === 0 )
+        if ( $_SERVER['REQUEST_METHOD'] !== 'POST' )
         {
             throw new InvalidArgumentException(
                 ezpI18n::tr(
                     'extension/ezjscore/autosave',
-                    "No POST data found, it\'s probably because you tried to upload a too big file"
+                    "A POST request is expected"
+                )
+            );
+        }
+        if ( count( $_POST ) === 0 )
+        {
+            throw new InvalidArgumentException(
+                ezpI18n::tr(
+                    'extension/ezjscore/autosave',
+                    "No POST data found, it's probably because you tried to upload a too big file"
                 )
             );
         }
@@ -174,7 +185,12 @@ class ezjscServerFunctionsAutosave extends ezjscServerFunctions
         );
 
         $version->setAttribute( 'modified', time() );
-        $version->setAttribute( 'status', eZContentObjectVersion::STATUS_DRAFT );
+        $status = eZContentObjectVersion::STATUS_INTERNAL_DRAFT;
+        if ( $http->hasPostVariable( 'StoreExitButton' ) )
+        {
+            $status = eZContentObjectVersion::STATUS_DRAFT;
+        }
+        $version->setAttribute( 'status', $status );
 
         $attributesToStore = array();
         foreach( $fetchResult['attribute-input-map'] as $id => $value )
@@ -198,6 +214,21 @@ class ezjscServerFunctionsAutosave extends ezjscServerFunctions
         );
 
         $db->commit();
+        $time = eZLocale::instance()->formatShortTime(
+            $version->attribute( 'modified' )
+        );
+        $result['message_success'] = ezpI18n::tr(
+            'extension/ezautosave',
+            "Draft saved at %time",
+            null, array( '%time' => $time )
+        );
+        $result['message_ago'] = ezpI18n::tr(
+            'extension/ezautosave',
+            "(%min minutes ago)",
+            null, array( '%min' => 0 )
+        );
+
+        $result['timestamp'] = $version->attribute( 'modified' );
 
         return $result;
     }

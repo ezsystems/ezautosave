@@ -1,7 +1,7 @@
 <?php /*
 
 [ExtensionSettings]
-DesignExtensions[]=qhautosave
+DesignExtensions[]=ezautosave
 
 [JavaScriptSettings]
 # If QH AutoSave doesn't work with the frontend editor, it might be
@@ -10,7 +10,9 @@ DesignExtensions[]=qhautosave
 # FrontendJavaScriptList[]=ezjsc::jquery
 # FrontendJavaScriptList[]=ezjsc::jqueryio
 
-FrontendJavaScriptList[]=qhautosave.js
-BackendJavaScriptList[]=qhautosave.js
+BackendJavaScriptList[]=ezautosubmit.js
+
+[StylesheetSettings]
+BackendCSSFileList[]=autosave.css
 
 */ ?>
