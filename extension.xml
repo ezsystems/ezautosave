@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <software>
     <metadata>
-        <name>QH AutoSave</name>
-        <version>1.0beta10</version>
-        <copyright>Copyright (C) 2011 NGUYEN DINH Quoc-Huy</copyright>
-        <license>GNU General Public License v2.0</license>
+        <name>eZ Autosave</name>
+        <version>//autogentag//</version>
+        <copyright>Copyright (C) 2011 NGUYEN DINH Quoc-Huy, 2011-2012 eZ Systems AS</copyright>
+        <license>//EZP_LICENSE//</license>
+        <info_url>http://projects.ez.no/ezautosave</info_url>
     </metadata>
 
     <dependencies>
         <requires>
-            <extension name="qhnotifications" />
             <extension name="ezjscore" />
-            <extension name="ezwebin" />
 	    </requires>
         <extends>
-            <extension name="qhjsiniloader" />
+            <extension name="ezwt" />
+            <extension name="ezwebin" />
         </extends>
     </dependencies>
 
