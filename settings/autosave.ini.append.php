@@ -6,6 +6,7 @@ Interval=180
 
 # whether to save the draft when the user leaves a form field
 # and has made some changes
+# if disabled, the autosave will only occur at regular interval
 TrackUserInput=enabled
 
 */ ?>
