@@ -25,7 +25,9 @@ class ezjscServerFunctionsAutosave extends ezjscServerFunctions
      */
     static public function saveDraft( $args )
     {
+        // force text/plain to make IE happy...
         header( 'Content-Type: text/plain', true );
+
         $result = array(
             'unvalidated-attributes' => array(),
             'stored-attributes' => array(),
