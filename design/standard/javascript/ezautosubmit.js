@@ -14,11 +14,6 @@ YUI(YUI3_config).add('ezautosubmit', function (Y) {
             e, f, n, v, i, il, j, jl, o,
             form = Y.one(id), f = form.getDOMNode();
 
-        // TODO find a more generic way to do this
-        if( typeof tinyMCE != 'undefined' ) {
-            tinyMCE.triggerSave();
-        }
-
         for (i = 0, il = f.elements.length; i < il; ++i) {
             e = f.elements[i];
 
@@ -107,19 +102,19 @@ YUI(YUI3_config).add('ezautosubmit', function (Y) {
         if ( this.started ) {
             return;
         }
-        this.timer = Y.later(this.conf.interval * 1000, this, this.submit, [], true);
-        this.started = true;
-        this.state = serializeForm(this.conf.form);
-        if ( this.conf.trackUserInput ) {
-            // TODO
-            // test with all datatypes
-            // how to deal with Online Editor ?
-            Y.all(this.conf.form + ' input').on('blur', function() {
-                that.submit();
+        Y.on('domready', function() {
+            that.timer = Y.later(that.conf.interval * 1000, that, that.submit, [], true);
+            that.started = true;
+            that.state = serializeForm(that.conf.form);
+            if ( that.conf.trackUserInput ) {
+
+                Y.one(that.conf.form).delegate('blur', function(e) {
+                    that.submit();
+                }, 'input, select, textarea, iframe');
+            }
+            Y.one(that.conf.form).on('submit', function () {
+                that.stop();
             });
-        }
-        Y.one(this.conf.form).on('submit', function () {
-            that.stop();
         });
     }
 
@@ -194,6 +189,6 @@ YUI(YUI3_config).add('ezautosubmit', function (Y) {
 
 }, '1.0.0', {
     requires: [
-        'event', 'event-custom', 'io-form', 'io-upload-iframe', 'yui-later', 'json-parse'
+        'event', 'event-custom', 'node-event-delegate', 'io-form', 'io-upload-iframe', 'yui-later', 'json-parse'
     ]
 });
