@@ -9,17 +9,17 @@ color:#333;
 
 .as-success
 {
-background:url(../../../../../design/admin2/images/2/yui_sprite.png) no-repeat 0 -1199px;
+background:url(../../standard/images/icons-sprite.png) no-repeat 0 0;
 }
 
 .as-saving
 {
-background:url(../images/as-loader.gif) no-repeat 0 1px;
+background:url(../../standard/images/as-loader.gif) no-repeat 0 1px;
 }
 
 .as-error
 {
-background:url(../../../../../design/admin2/images/2/yui_sprite.png) no-repeat 0 -1897px;
+background:url(../../standard/images/icons-sprite.png) no-repeat 0 -51px;
 }
 
 .as-error span

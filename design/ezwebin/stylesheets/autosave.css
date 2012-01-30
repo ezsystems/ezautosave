@@ -1,0 +1,36 @@
+#ez-as-place
+{
+font-size:0.90em;
+border:1px solid #999;
+border-top:0;
+border-right:0;
+border-bottom-left-radius:5px;
+position:fixed;
+right:0;
+padding:0.3em 2px 0.3em 23px;
+}
+
+.as-init
+{
+display:none;
+}
+
+.as-success
+{
+background:#fff url(../../standard/images/icons-sprite.png) no-repeat 4px 1px;
+}
+
+.as-saving
+{
+background:#fff url(../../standard/images/as-loader.gif) no-repeat 4px 1px;
+}
+
+.as-error
+{
+background:#fff url(../../standard/images/icons-sprite.png) no-repeat 4px -50px;
+}
+
+.as-error span
+{
+border-bottom:1px dashed #999;
+}
