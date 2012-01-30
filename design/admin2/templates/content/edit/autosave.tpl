@@ -1,3 +1,4 @@
+{ezscript_require( 'ezjsc::yui3', 'ezautosubmit.js')}
 <script type="text/javascript">
 
 YUI(YUI3_config).use('ezautosubmit', 'node-base', 'node-style', function (Y) {ldelim}
