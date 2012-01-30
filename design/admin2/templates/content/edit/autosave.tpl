@@ -39,8 +39,9 @@ YUI(YUI3_config).use('ezautosubmit', 'node-base', 'node-style', function (Y) {ld
             'before'
         );
         place = Y.one('#ez-as-place');
-
-        Y.all(this.conf.form + ' input[name=StoreButton]').hide();
+{/literal}
+        {if ezini( 'AutosaveSettings', 'HideStoreDraftButton', 'autosave.ini' )|eq( 'enabled' )}Y.all(this.conf.form + ' input[name=StoreButton]').hide();{/if}
+{literal}
         Y.on('beforeunload', function(e) {
             setTimeout(function() { 
                 that.submit("StoreExitButton=1");

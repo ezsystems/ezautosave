@@ -38,8 +38,9 @@ YUI(YUI3_config).use('ezautosubmit', 'node-base', 'node-style', function (Y) {ld
         Y.one('#ezwt').append('<div id="ez-as-place" class="as-init"></div>');
         place = Y.one('#ez-as-place');
         place.setStyle('top', parseInt(Y.one('#ezwt').get('offsetHeight')) - 1 + 'px');
-
-        Y.all(this.conf.form + ' input[name=StoreButton]').hide();
+{/literal}
+        {if ezini( 'AutosaveSettings', 'HideStoreDraftButton', 'autosave.ini' )|eq( 'enabled' )}Y.all(this.conf.form + ' input[name=StoreButton]').hide();{/if}
+{literal}
         Y.on('beforeunload', function(e) {
             setTimeout(function() {
                 that.submit("StoreExitButton=1");

@@ -9,4 +9,7 @@ Interval=180
 # if disabled, the autosave will only occur at regular interval
 TrackUserInput=enabled
 
+# whether to hide the Store draft button
+HideStoreDraftButton=enabled
+
 */ ?>
