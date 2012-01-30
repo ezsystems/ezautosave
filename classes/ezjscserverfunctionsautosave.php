@@ -42,7 +42,7 @@ class ezjscServerFunctionsAutosave extends ezjscServerFunctions
         {
             throw new InvalidArgumentException(
                 ezpI18n::tr(
-                    'extension/ezjscore/autosave',
+                    'extension/ezautosave/autosave',
                     'This action requires 3 parameters'
                 )
             );
@@ -51,7 +51,7 @@ class ezjscServerFunctionsAutosave extends ezjscServerFunctions
         {
             throw new InvalidArgumentException(
                 ezpI18n::tr(
-                    'extension/ezjscore/autosave',
+                    'extension/ezautosave/autosave',
                     "A POST request is expected"
                 )
             );
@@ -60,7 +60,7 @@ class ezjscServerFunctionsAutosave extends ezjscServerFunctions
         {
             throw new InvalidArgumentException(
                 ezpI18n::tr(
-                    'extension/ezjscore/autosave',
+                    'extension/ezautosave/autosave',
                     "No POST data found, it's probably because you tried to upload a too big file"
                 )
             );
@@ -70,7 +70,7 @@ class ezjscServerFunctionsAutosave extends ezjscServerFunctions
         {
             throw new InvalidArgumentException(
                 ezpI18n::tr(
-                    'extension/ezjscore/autosave',
+                    'extension/ezautosave/autosave',
                     'Unable to load the content #%objectid',
                     null, array( '%objectid' => (int)$args[0] )
                 )
@@ -81,7 +81,7 @@ class ezjscServerFunctionsAutosave extends ezjscServerFunctions
         {
             throw new InvalidArgumentException(
                 ezpI18n::tr(
-                    'extension/ezjscore/autosave',
+                    'extension/ezautosave/autosave',
                     'The content #%objectid is archived',
                     null, array(
                         '%objectid' => $contentObject->attribute( 'id' )
@@ -95,7 +95,7 @@ class ezjscServerFunctionsAutosave extends ezjscServerFunctions
         {
             throw new InvalidArgumentException(
                 ezpI18n::tr(
-                    'extension/ezjscore/autosave',
+                    'extension/ezautosave/autosave',
                     'Unable to load version #%versionr of content #%objectid',
                     null, array(
                         '%versionnr' => (int)$args[1],
@@ -109,7 +109,7 @@ class ezjscServerFunctionsAutosave extends ezjscServerFunctions
         {
             throw new RuntimeException(
                 ezpI18n::tr(
-                    'extension/ezjscore/autosave',
+                    'extension/ezautosave/autosave',
                     "Version #%versionr of content #%objectid is not a draft",
                     null, array(
                         '%versionnr' => $version->attribute( 'version' ),
@@ -122,7 +122,7 @@ class ezjscServerFunctionsAutosave extends ezjscServerFunctions
         {
             throw new RuntimeException(
                 ezpI18n::tr(
-                    'extension/ezjscore/autosave',
+                    'extension/ezautosave/autosave',
                     "You're not allowed to store a version that is not yours"
                 )
             );
@@ -134,7 +134,7 @@ class ezjscServerFunctionsAutosave extends ezjscServerFunctions
         {
             throw new InvalidArgumentException(
                 ezpI18n::tr(
-                    'extension/ezjscore/autosave',
+                    'extension/ezautosave/autosave',
                     "Unable to load the language '%localeCode'",
                     null, array( '%localeCode' => $editLanguage )
                 )
