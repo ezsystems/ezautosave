@@ -26,7 +26,7 @@ Features
 Requirements
 ============
 
-- eZ Publish 4.7 or +
+- eZ Publish 2012.01 or 4.7 or newer
 - ezjscore
 
 TODO
