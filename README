@@ -1,1 +1,42 @@
-see doc/INSTALL
+About eZ Autosave
+=================
+
+Project page: http://projectss.ez.no/ezautosave
+Roadmap feature request:
+http://share.ez.no/feature-requests/auto-store-draft-feature
+
+eZ Autosave enables the automatic and transparent saving of the draft
+while editing a content in eZ Publish.
+
+This extension is based on QH Autosave by Quoc-Huy NGUYEN DINH
+
+
+Features
+========
+
+- Regurlarly save the draft (interval defined in
+  autosave.ini/[AutosaveSettings]/Interval)
+- Save the draft when the user leaves a form field (enable/disable
+  through autosave.ini/[AutosaveSettings]/TrackUserInput)
+- Hide the "Store draft" button (enable/disable through
+  autosave.ini/[AutosaveSettings]/HideStoreDraftButton)
+- Try to save the draft if the editor unexpectedly quits the content
+  edit page (back button, close browser, ...)
+
+Requirements
+============
+
+- eZ Publish 4.7 or +
+- ezjscore
+
+TODO
+====
+
+- Add timeout support as soon as the YUI3 bug #2531308 is fixed
+  http://yuilibrary.com/projects/yui3/ticket/2531308
+- When timeout is implemented, add a Retry button in case of timeout
+- Use the output of the ezjscore action to update the content edit form:
+  for instance, after uploading an image, the preview could be updated
+  or the unvalidated field could be hightlighted.
+- Let the editor disable/enable the autosave process
+- Let the editor choose the interval between two autosave attempts
