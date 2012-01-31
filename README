@@ -14,7 +14,7 @@ This extension is based on QH Autosave by Quoc-Huy NGUYEN DINH
 Features
 ========
 
-- Regurlarly save the draft (interval defined in
+- Regularly save the draft (interval defined in
   autosave.ini/[AutosaveSettings]/Interval)
 - Save the draft when the user leaves a form field (enable/disable
   through autosave.ini/[AutosaveSettings]/TrackUserInput)
@@ -29,8 +29,8 @@ Requirements
 - eZ Publish 2012.01 or 4.7 or newer
 - ezjscore
 
-TODO
-====
+TODO / Known issues
+===================
 
 - Add timeout support as soon as the YUI3 bug #2531308 is fixed
   http://yuilibrary.com/projects/yui3/ticket/2531308
@@ -69,7 +69,7 @@ YUI(YUI3_config).use('ezautosubmit', function (Y) {
     var as = new Y.eZ.AutoSubmit({
         form: '#selectorToTheForm',
         action: 'url/to/post/the/form/content', // should answer in JSON
-        interval: 30, // number of second between two submit attempts
+        interval: 30, // number of seconds between two submit attempts
         trackUserInput: true // boolean, whether the component should try to
                              // submit the form if the user leaves a field
                              // and has made changes
@@ -108,7 +108,6 @@ YUI(YUI3_config).use('ezautosubmit', function (Y) {
         // change has occurred since the last submit
         // "this" is the Y.eZ.AutoSubmit instance
     });
-
 
 });
 </script>
