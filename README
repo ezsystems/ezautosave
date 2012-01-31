@@ -40,3 +40,75 @@ TODO
   or the unvalidated field could be hightlighted.
 - Let the editor disable/enable the autosave process
 - Let the editor choose the interval between two autosave attempts
+
+
+Technical notes
+===============
+
+This extension provides a JavaScript component called Y.eZ.AutoSubmit.
+It's the main part of the extension, it allows to automatically submit a
+form at fixed interval or because the user has changed something.
+
+This component extends the EventTarget YUI3 component and then triggers
+some events during its life. The available events are (see example below
+for details):
+
+- init
+- beforesave
+- success
+- error
+- nochange
+
+Example:
+
+{ezscript_require( array( 'ezjsc::yui3', 'ezautosubmit.js' ) )}
+<script type="text/javascript">
+
+YUI(YUI3_config).use('ezautosubmit', function (Y) {
+
+    var as = new Y.eZ.AutoSubmit({
+        form: '#selectorToTheForm',
+        action: 'url/to/post/the/form/content', // should answer in JSON
+        interval: 30, // number of second between two submit attempts
+        trackUserInput: true // boolean, whether the component should try to
+                             // submit the form if the user leaves a field
+                             // and has made changes
+    }
+
+    as.on('init', function () {
+        // init event
+        // triggered when the component is initialized
+        // "this" is the Y.eZ.AutoSubmit instance
+    });
+
+    as.on('beforesave', function () {
+        // beforesave event
+        // triggered right before the form is automatically submitted
+        // "this" is the Y.eZ.AutoSubmit instance
+    });
+
+    as.on('sucess', function (e) {
+        // success event
+        // triggered if the form was correctly submitted
+        // e.json contains the server response in JSON
+        // "this" is the Y.eZ.AutoSubmit instance
+    });
+
+    as.on('error', function (e) {
+        // error event
+        // triggered if the form was not correctly submitted
+        // e.json contains the server response in JSON if the
+        // server response was JSON valid
+        // "this" is the Y.eZ.AutoSubmit instance
+    });
+
+    as.on('nochange', function () {
+        // nochange event
+        // triggered if the component tries to submit the form but no
+        // change has occurred since the last submit
+        // "this" is the Y.eZ.AutoSubmit instance
+    });
+
+
+});
+</script>
