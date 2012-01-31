@@ -16,7 +16,7 @@ YUI(YUI3_config).use('ezautosubmit', 'node-base', 'node-style', function (Y) {ld
             error: "{'An error occured while autosaving the draft'|i18n( 'design/ezwebin/autosave' )|wash( 'javascript' )}",
             saving: "{'The draft is being saved'|i18n( 'design/ezwebin/autosave' )|wash( 'javascript' )}"
         {rdelim},
-        timer = false, place, opacity = Y.one('#ezwt').getStyle('opacity');
+        timer = false, place;
 
     {literal}
 
@@ -33,7 +33,7 @@ YUI(YUI3_config).use('ezautosubmit', 'node-base', 'node-style', function (Y) {ld
         }
     });
 
-    as.on('init', function() {
+    as.on('init', function () {
         var that = this;
         Y.one('#ezwt').append('<div id="ez-as-place" class="as-init"></div>');
         place = Y.one('#ez-as-place');
@@ -41,8 +41,8 @@ YUI(YUI3_config).use('ezautosubmit', 'node-base', 'node-style', function (Y) {ld
 {/literal}
         {if ezini( 'AutosaveSettings', 'HideStoreDraftButton', 'autosave.ini' )|eq( 'enabled' )}Y.all(this.conf.form + ' input[name=StoreButton]').hide();{/if}
 {literal}
-        Y.on('beforeunload', function(e) {
-            setTimeout(function() {
+        Y.on('beforeunload', function (e) {
+            setTimeout(function () {
                 that.submit("StoreExitButton=1");
             }, 0);
         });

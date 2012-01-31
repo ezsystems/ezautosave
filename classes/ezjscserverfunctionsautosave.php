@@ -36,7 +36,7 @@ class ezjscServerFunctionsAutosave extends ezjscServerFunctions
         $http = eZHTTPTool::instance();
 
         // workaround to the eZContentObjectEditHandler API that needs a Module
-        $Module = false; 
+        $Module = false;
 
         if ( count( $args ) != 3 )
         {

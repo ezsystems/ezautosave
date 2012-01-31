@@ -83,7 +83,6 @@ YUI(YUI3_config).add('ezautosubmit', function (Y) {
         };
         this.ajax = false;
         this.ajaxSubscription = false;
-        this.eventSubscriptions = [];
 
         Y.on('domready', function () {
             that.fire('init');
@@ -94,7 +93,8 @@ YUI(YUI3_config).add('ezautosubmit', function (Y) {
      * Starts the autosubmit job
      *  - stores the initial state of the form
      *  - initializes the timer to periodically submit the form
-     *  - initializes the events
+     *  - initializes the events to track user inputs
+     *  - initializes the event to stop autosubmit if the user submits the form
      */
     eZAutoSubmit.prototype.start = function () {
         var that = this;
@@ -102,13 +102,12 @@ YUI(YUI3_config).add('ezautosubmit', function (Y) {
         if ( this.started ) {
             return;
         }
-        Y.on('domready', function() {
+        Y.on('domready', function () {
             that.timer = Y.later(that.conf.interval * 1000, that, that.submit, [], true);
             that.started = true;
             that.state = serializeForm(that.conf.form);
             if ( that.conf.trackUserInput ) {
-
-                Y.one(that.conf.form).delegate('blur', function(e) {
+                Y.one(that.conf.form).delegate('blur', function (e) {
                     that.submit();
                 }, 'input, select, textarea, iframe');
             }
@@ -144,7 +143,7 @@ YUI(YUI3_config).add('ezautosubmit', function (Y) {
         var that = this,
             formState = serializeForm(this.conf.form),
             ajaxConf = Y.clone(this.ajaxConfiguration, true);
-        
+
         ajaxConf.form.id = Y.one(this.conf.form);
         if ( !this.started ) {
             return;
