@@ -8,7 +8,7 @@ YUI(YUI3_config).use('ezautosubmit', 'node-base', 'node-style', function (Y) {ld
 
             form: '#editform',
             action: {concat( 'ezjscore/call/ezautosave::savedraft::', $object.id, '::', $edit_version, '::', $edit_language, '?ContentType=javascript' )|ezurl},
-            interval: {ezini( 'AutosaveSettings', 'Interval', 'autosave.ini' )},
+            interval: {ezini( 'AutosaveSettings', 'Interval', 'autosave.ini' )|int()},
             trackUserInput: {cond( ezini( 'AutosaveSettings', 'TrackUserInput', 'autosave.ini')|eq( 'enabled' ), "true", "false" )}
         {rdelim}),
         messages = {ldelim}

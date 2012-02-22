@@ -71,6 +71,10 @@ YUI(YUI3_config).add('ezautosubmit', function (Y) {
         var that = this;
 
         this.conf = Y.merge(defaultConfig, conf);
+        this.conf.interval = parseInt(this.conf.interval);
+        if ( !this.conf.interval ) {
+            this.conf.interval = defaultConfig.interval;
+        }
         this.timer = false;
         this.started = false;
         this.state = '';
