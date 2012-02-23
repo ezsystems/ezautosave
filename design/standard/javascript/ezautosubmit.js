@@ -165,6 +165,12 @@ YUI(YUI3_config).add('ezautosubmit', function (Y) {
                 var json, error = false;
 
                 that.ajaxSubscription.detach();
+                if ( Y.Lang.isUndefined(data.responseText) ) {
+                    // the request was aborted
+                    // probably because of Y.AutoSubmit.stop();
+                    that.fire('abort');
+                    return;
+                }
                 try {
                     json = Y.JSON.parse(data.responseText);
                 } catch(e) {

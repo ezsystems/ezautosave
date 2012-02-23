@@ -20,6 +20,13 @@ YUI(YUI3_config).use('ezautosubmit', 'node-base', 'node-style', function (Y) {ld
 
     {literal}
 
+    as.on('abort', function() {
+        place.removeClass('as-saving')
+             .removeClass('as-error')
+             .removeClass('as-success')
+             .setContent('');
+    });
+
     as.on('error', function (e) {
         if ( timer ) {
             timer.cancel();

@@ -58,6 +58,7 @@ for details):
 - success
 - error
 - nochange
+- abort
 
 Example:
 
@@ -106,6 +107,13 @@ YUI(YUI3_config).use('ezautosubmit', function (Y) {
         // nochange event
         // triggered if the component tries to submit the form but no
         // change has occurred since the last submit
+        // "this" is the Y.eZ.AutoSubmit instance
+    });
+
+    as.on('abort', function () {
+        // abort event
+        // triggered if the component tried to submit the form but the
+        // request is aborted for instance because of a call to stop()
         // "this" is the Y.eZ.AutoSubmit instance
     });
 
