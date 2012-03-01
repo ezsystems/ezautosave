@@ -41,8 +41,8 @@ YUI(YUI3_config).use('ezautosubmit', 'node-base', 'node-style', function (Y) {ld
 
     as.on('init', function () {
         var that = this;
-        Y.one('#controlbar-top .float-break').insert(
-            '<div class="button-right"><em id="ez-as-place"></em></div>',
+        Y.one('#controlbar-top .button-right').append(
+            '<em id="ez-as-place"></em>',
             'before'
         );
         place = Y.one('#ez-as-place');
