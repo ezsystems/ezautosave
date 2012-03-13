@@ -4,18 +4,25 @@ YUI(YUI3_config).add('ezautosubmit', function (Y) {
 
     var defaultConfig = {
         interval: 300,
-        trackUserInput: true
+        trackUserInput: true,
+        ignoreClass: false
     };
 
     // based on Y.IO._serialize which is private
-    function serializeForm(id) {
+    // also ignore form elements that have ignoreClass
+    function serializeForm(id, ignoreClass) {
         var data = [], eUC = encodeURIComponent,
             item = 0,
             e, f, n, v, i, il, j, jl, o,
-            form = Y.one(id), f = form.getDOMNode();
+            form = Y.one(id), f = form.getDOMNode(),
+            searchClass = ' ' + ignoreClass + ' ';
 
         for (i = 0, il = f.elements.length; i < il; ++i) {
             e = f.elements[i];
+
+            if ( ignoreClass && (' ' + e.className + ' ').indexOf(searchClass) > -1 ) {
+                continue;
+            }
 
             n = eUC(e.name) + '=';
             v = eUC(e.value);
@@ -91,6 +98,10 @@ YUI(YUI3_config).add('ezautosubmit', function (Y) {
         Y.on('domready', function () {
             that.fire('init');
         });
+
+        Y.on('autosubmit:forcesave', function () {
+            that.submit('AutoSubmitForced=' + new Date().getTime());
+        });
     }
 
     /**
@@ -109,10 +120,12 @@ YUI(YUI3_config).add('ezautosubmit', function (Y) {
         Y.on('domready', function () {
             that.timer = Y.later(that.conf.interval * 1000, that, that.submit, [], true);
             that.started = true;
-            that.state = serializeForm(that.conf.form);
+            that.state = serializeForm(that.conf.form, that.conf.ignoreClass);
             if ( that.conf.trackUserInput ) {
                 Y.one(that.conf.form).delegate('blur', function (e) {
-                    that.submit();
+                    if ( !that.conf.ignoreClass || !e.target.hasClass(that.conf.ignoreClass) ) {
+                        that.submit();
+                    }
                 }, 'input, select, textarea, iframe');
             }
             Y.one(that.conf.form).on('submit', function () {
@@ -145,7 +158,8 @@ YUI(YUI3_config).add('ezautosubmit', function (Y) {
      */
     eZAutoSubmit.prototype.submit = function (fields) {
         var that = this,
-            formState = serializeForm(this.conf.form),
+            formState = serializeForm(this.conf.form, this.conf.ignoreClass),
+            originalFormState = formState,
             ajaxConf = Y.clone(this.ajaxConfiguration, true);
 
         ajaxConf.form.id = Y.one(this.conf.form);
@@ -182,7 +196,7 @@ YUI(YUI3_config).add('ezautosubmit', function (Y) {
                     that.fire('success', {json: json});
                 }
             });
-            this.state = formState;
+            this.state = originalFormState;
             this.fire('beforesave');
             if ( fields ) {
                 ajaxConf.data = fields;

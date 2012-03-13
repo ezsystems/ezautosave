@@ -6,7 +6,9 @@ Roadmap feature request:
 http://share.ez.no/feature-requests/auto-store-draft-feature
 
 eZ Autosave enables the automatic and transparent saving of the draft
-while editing a content in eZ Publish.
+while editing a content in eZ Publish. Based on this, it also provides
+an "inline" preview from the content edit in the administration
+interface.
 
 This extension is based on QH Autosave by Quoc-Huy NGUYEN DINH
 
@@ -60,6 +62,10 @@ for details):
 - nochange
 - abort
 
+It also listens for the event 'autosubmit:forcesave'. When this events
+is fired, the Y.eZ.AutoSubmit component will try to submit the form no
+matter if its state has changed or not.
+
 Example:
 
 {ezscript_require( array( 'ezjsc::yui3', 'ezautosubmit.js' ) )}
@@ -69,6 +75,8 @@ YUI(YUI3_config).use('ezautosubmit', function (Y) {
 
     var as = new Y.eZ.AutoSubmit({
         form: '#selectorToTheForm',
+        ignoreClass: 'no-autosave', // change in form fields with this class
+                                    // will not trigger an auto submit
         action: 'url/to/post/the/form/content', // should answer in JSON
         interval: 30, // number of seconds between two submit attempts
         trackUserInput: true // boolean, whether the component should try to
@@ -116,6 +124,10 @@ YUI(YUI3_config).use('ezautosubmit', function (Y) {
         // request is aborted for instance because of a call to stop()
         // "this" is the Y.eZ.AutoSubmit instance
     });
+
+    // from anywhere in the application, the following line will make
+    // the Y.eZ.AutoSubmit component to submit the form
+    Y.fire('autosubmit:forcesave');
 
 });
 </script>

@@ -234,5 +234,69 @@ class ezjscServerFunctionsAutosave extends ezjscServerFunctions
 
         return $result;
     }
+
+    /**
+     * Saves the draft and generates the preview of this draft.
+     * @see self::saveDraft()
+     *
+     * @param array $args array( content object id, version number, locale code )
+     * @return array
+     */
+    static public function saveDraftPreview( $args )
+    {
+        $result = self::saveDraft( $args );
+        $object = eZContentObject::fetch( (int)$args[0] );
+        $tpl = eZTemplate::factory();
+        $tpl->setVariable( 'object', $object );
+        $tpl->setVariable( 'version', $object->version( (int)$args[1] ) );
+        $tpl->setVariable( 'locale', eZLocale::instance( $args[2] ) );
+        $siteaccessList = self::getSiteaccessList( $args[2], $object );
+        $defaultSiteaccess = eZINI::instance( 'site.ini' )->variable( 'SiteSettings', 'DefaultAccess' );
+        if ( !isset( $siteaccessList[$defaultSiteaccess] ) )
+        {
+            // default siteaccess is not able to show the object in the
+            // selected locale, so we take the first one in available
+            // siteaccess
+            $defaultSiteaccess = current( $siteaccessList );
+        }
+        $tpl->setVariable( 'default_siteaccess', $defaultSiteaccess );
+        $tpl->setVariable( 'siteaccess_list', $siteaccessList );
+
+        $result['preview'] = $tpl->fetch( 'design:content/ajax_preview.tpl' );
+        return $result;
+    }
+
+    /**
+     * Returns a siteaccess list where the content object can be viewed. This
+     * list is based on the locale settings and/or on the always available
+     * flag of the content object.
+     *
+     * @param mixed $locale
+     * @param eZContentObject $object
+     * @return array( siteaccessName1 => siteaccessName1, ... )
+     */
+    protected static function getSiteaccessList( $locale, eZContentObject $object )
+    {
+        $ini = eZINI::instance( 'site.ini' );
+        $availableSA = $ini->variable( 'SiteAccessSettings', 'AvailableSiteAccessList' );
+        if ( $object->attribute( 'always_available' ) )
+        {
+            return $availableSA;
+        }
+
+        $result = array();
+        foreach ( $availableSA as $sa )
+        {
+            $saINI = eZSiteAccess::getIni( $sa, 'site.ini' );
+            if ( $locale === $saINI->variable( 'RegionalSettings', 'ContentObjectLocale' )
+                    || in_array( $locale, $saINI->variable( 'RegionalSettings', 'SiteLanguageList' ) )
+                    || $saINI->variable( 'RegionalSettings', 'ShowUntranslatedObjects' ) === 'enabled'
+               )
+            {
+                $result[$sa] = $sa;
+            }
+        }
+        return $result;
+    }
 }
 ?>
