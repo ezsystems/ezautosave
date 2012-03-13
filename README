@@ -6,7 +6,9 @@ Roadmap feature request:
 http://share.ez.no/feature-requests/auto-store-draft-feature
 
 eZ Autosave enables the automatic and transparent saving of the draft
-while editing a content in eZ Publish.
+while editing a content in eZ Publish. Based on this, it also provides
+an "inline" preview from the content edit in the administration
+interface.
 
 This extension is based on QH Autosave by Quoc-Huy NGUYEN DINH
 
