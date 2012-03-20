@@ -5,22 +5,48 @@
     <name>design/admin2/autosave</name>
     <message>
         <source>An error occured while autosaving the draft</source>
-        <translation>Une erreur s'est produite durant l'enregistrement automatique du brouillon</translation>
+        <translation>Une erreur s&apos;est produite durant l&apos;enregistrement automatique du brouillon</translation>
     </message>
     <message>
         <source>The draft is being saved</source>
-        <translation>Le brouillon est en cours de d'enregistrement</translation>
+        <translation>Le brouillon est en cours de d&apos;enregistrement</translation>
+    </message>
+</context>
+<context>
+    <name>design/admin2/content/ajax_preview</name>
+    <message>
+        <source>Back to the edit form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Preview of &amp;lt;%name&amp;gt; in siteaccess</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>design/admin2/preview</name>
+    <message>
+        <source>Loading...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>An error occured.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Preview</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>design/ezwebin/autosave</name>
     <message>
         <source>An error occured while autosaving the draft</source>
-        <translation>Une erreur s'est produite durant l'enregistrement automatique du brouillon</translation>
+        <translation>Une erreur s&apos;est produite durant l&apos;enregistrement automatique du brouillon</translation>
     </message>
     <message>
         <source>The draft is being saved</source>
-        <translation>Le brouillon est en cours de d'enregistrement</translation>
+        <translation>Le brouillon est en cours de d&apos;enregistrement</translation>
     </message>
 </context>
 <context>
@@ -46,7 +72,7 @@
     </message>
     <message>
         <source>No POST data found, it&apos;s probably because you tried to upload a too big file</source>
-        <translation>Aucune donnée n'a été transmise en POST, vous essayez probablement d'envoyer un fichier trop gros</translation>
+        <translation>Aucune donnée n&apos;a été transmise en POST, vous essayez probablement d&apos;envoyer un fichier trop gros</translation>
     </message>
     <message>
         <source>Unable to load the content #%objectid</source>
@@ -62,15 +88,15 @@
     </message>
     <message>
         <source>Version #%versionr of content #%objectid is not a draft</source>
-        <translation>La version #%versionr du contenu #%objectid n'est pas un brouillon</translation>
+        <translation>La version #%versionr du contenu #%objectid n&apos;est pas un brouillon</translation>
     </message>
     <message>
         <source>You&apos;re not allowed to store a version that is not yours</source>
-        <translation>Vous n'avez pas le droit de modifier une version dont vous n'êtes pas le créateur</translation>
+        <translation>Vous n&apos;avez pas le droit de modifier une version dont vous n&apos;êtes pas le créateur</translation>
     </message>
     <message>
         <source>Unable to load the language &apos;%localeCode&apos;</source>
-        <translation>Impossible de trouver la langue '%localeCode'</translation>
+        <translation>Impossible de trouver la langue &apos;%localeCode&apos;</translation>
     </message>
 </context>
 </TS>

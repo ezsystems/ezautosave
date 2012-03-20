@@ -13,6 +13,32 @@
     </message>
 </context>
 <context>
+    <name>design/admin2/content/ajax_preview</name>
+    <message>
+        <source>Back to the edit form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Preview of &amp;lt;%name&amp;gt; in siteaccess</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>design/admin2/preview</name>
+    <message>
+        <source>Loading...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>An error occured.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Preview</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>design/ezwebin/autosave</name>
     <message>
         <source>An error occured while autosaving the draft</source>
