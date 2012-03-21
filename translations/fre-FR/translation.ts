@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0">
+<TS version="2.0" language="fr_FR">
 <context>
     <name>design/admin2/autosave</name>
     <message>
@@ -16,26 +16,26 @@
     <name>design/admin2/content/ajax_preview</name>
     <message>
         <source>Back to the edit form</source>
-        <translation type="unfinished"></translation>
+        <translation>Retour au formulaire d&apos;édition</translation>
     </message>
     <message>
         <source>Preview of &amp;lt;%name&amp;gt; in siteaccess</source>
-        <translation type="unfinished"></translation>
+        <translation>Prévisualisation de &amp;lt;%name&amp;gt; dans le siteacces</translation>
     </message>
 </context>
 <context>
     <name>design/admin2/preview</name>
     <message>
         <source>Loading...</source>
-        <translation type="unfinished"></translation>
+        <translation>Chargement...</translation>
     </message>
     <message>
         <source>An error occured.</source>
-        <translation type="unfinished"></translation>
+        <translation>Une erreur est survenue.</translation>
     </message>
     <message>
         <source>Preview</source>
-        <translation type="unfinished"></translation>
+        <translation>Prévisualisation</translation>
     </message>
 </context>
 <context>
