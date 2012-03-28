@@ -98,7 +98,7 @@ class ezjscServerFunctionsAutosave extends ezjscServerFunctions
                     'extension/ezautosave/autosave',
                     'Unable to load version #%versionr of content #%objectid',
                     null, array(
-                        '%versionnr' => (int)$args[1],
+                        '%versionr' => (int)$args[1],
                         '%objectid' => $contentObject->attribute( 'id' )
                     )
                 )
@@ -112,7 +112,7 @@ class ezjscServerFunctionsAutosave extends ezjscServerFunctions
                     'extension/ezautosave/autosave',
                     "Version #%versionr of content #%objectid is not a draft",
                     null, array(
-                        '%versionnr' => $version->attribute( 'version' ),
+                        '%versionr' => $version->attribute( 'version' ),
                         '%objectid' => $version->attribute( 'contentobject_id' )
                     )
                 )
