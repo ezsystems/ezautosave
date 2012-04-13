@@ -160,3 +160,7 @@ background: url(../../../../../design/admin2/images/2/yui_sprite.png) no-repeat 
 cursor:n-resize;
 }
 
+.preview-warning
+{
+font-size:1.1em;
+}

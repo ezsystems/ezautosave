@@ -11,6 +11,9 @@
         <img src={'as-loader.gif'|ezimage} alt="Loading..." style="display:none" id="iframe-loader" />
     </h1>
     <div class="context-information">
+        <p class="left preview-warning">
+            {'<strong>Warning:</strong> <em>following links from the preview will take you to the live version of the website</em>'|i18n( 'design/admin2/content/ajax_preview' )}
+        </p>
         <p class="right translation">
             {$locale.intl_language_name|wash}&nbsp;<img src="{$locale.locale_code|flag_icon}" width="18" height="12" style="vertical-align: middle;" alt="{$locale.locale_code}" />
         </p>
