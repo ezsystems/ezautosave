@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="en_US">
-<defaultcodec></defaultcodec>
+<!DOCTYPE TS>
+<TS version="2.0" language="en_US">
 <context>
     <name>design/admin2/autosave</name>
     <message>
@@ -21,6 +21,10 @@
     <message>
         <source>Preview of &amp;lt;%name&amp;gt; in siteaccess</source>
         <translation>Προεπισκόπηση του &amp;lt;%name&amp;gt; στο siteaccess</translation>
+    </message>
+    <message>
+        <source>&lt;strong&gt;Warning:&lt;/strong&gt; &lt;em&gt;following links from the preview will take you to the live version of the website&lt;/em&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
