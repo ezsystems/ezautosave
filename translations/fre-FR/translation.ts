@@ -24,7 +24,7 @@
     </message>
     <message>
         <source>&lt;strong&gt;Warning:&lt;/strong&gt; &lt;em&gt;following links from the preview will take you to the live version of the website&lt;/em&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;strong&gt;Attention :&lt;/strong&gt; &lt;em&gt;cliquer sur les liens de l&apos;aperçu vous redirigera sur le site Internet&lt;/em&gt;</translation>
     </message>
 </context>
 <context>
