@@ -251,7 +251,7 @@ class ezjscServerFunctionsAutosave extends ezjscServerFunctions
         $tpl->setVariable( 'version', $object->version( (int)$args[1] ) );
         $tpl->setVariable( 'locale', eZLocale::instance( $args[2] ) );
         $siteaccessList = self::getSiteaccessList( $args[2], $object );
-        if ( empty( $siteaccessList )
+        if ( empty( $siteaccessList ) )
         {
             $siteaccessList = array(
                 eZINI::instance( 'site.ini' )->variable(
