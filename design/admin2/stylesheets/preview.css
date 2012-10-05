@@ -52,7 +52,7 @@ text-align:center;
 margin:40px auto 0 auto;
 display:inline-block;
 font-size:120%;
-background:#fff url(../../../../../design/admin2/images/2/loader.gif) 15px center no-repeat;
+background:#fff url(../../../../../design/admin/images/2/loader.gif) 15px center no-repeat;
 padding:20px 30px 20px 62px;
 color:#222;
 }
@@ -67,7 +67,7 @@ display:none;
 margin:40px auto 0 auto;
 display:inline-block;
 font-size:120%;
-background:#ffdede url(../../../../../design/admin2/images/message-error.gif) 15px center no-repeat;
+background:#ffdede url(../../../../../design/admin/images/message-error.gif) 15px center no-repeat;
 padding:20px 30px 20px 62px;
 border:1px solid #9a2e2e;
 border-radius:5px;
@@ -125,7 +125,7 @@ display:none;
 display:inline-block;
 margin-top:0.7em;
 padding-left:15px;
-background: url(../../../../../design/admin2/images/2/yui_sprite.png) no-repeat -16px -850px;
+background: url(../../../../../design/admin/images/2/yui_sprite.png) no-repeat -16px -850px;
 }
 
 #preview-link
@@ -152,7 +152,7 @@ border-bottom:1px solid #fff;
 
 #preview-link.previewed span
 {
-background: url(../../../../../design/admin2/images/2/yui_sprite.png) no-repeat -16px -950px;
+background: url(../../../../../design/admin/images/2/yui_sprite.png) no-repeat -16px -950px;
 }
 
 #preview-link.previewed:hover
