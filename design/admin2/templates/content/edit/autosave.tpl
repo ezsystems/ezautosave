@@ -23,7 +23,7 @@ YUI(YUI3_config).use('ezautosubmit', 'ezcontentpreview', 'node-base', 'node-styl
         {rdelim}),
         messages = {ldelim}
 
-            error: "{'An error occured while autosaving the draft'|i18n( 'design/admin2/autosave' )|wash( 'javascript' )}",
+            error: "{'An error occurred while autosaving the draft'|i18n( 'design/admin2/autosave' )|wash( 'javascript' )}",
             saving: "{'The draft is being saved'|i18n( 'design/admin2/autosave' )|wash( 'javascript' )}"
         {rdelim},
         preview = new Y.eZ.ContentPreview({ldelim}
@@ -31,7 +31,7 @@ YUI(YUI3_config).use('ezautosubmit', 'ezcontentpreview', 'node-base', 'node-styl
             texts: {ldelim}
 
                 loading: "{'Loading...'|i18n( 'design/admin2/preview' )|wash( 'javascript' )}",
-                error: "{'An error occured.'|i18n( 'design/admin2/preview' )|wash( 'javascript' )}",
+                error: "{'An error occurred.'|i18n( 'design/admin2/preview' )|wash( 'javascript' )}",
                 preview: "{'Preview'|i18n( 'design/admin2/preview' )|wash( 'javascript' )}"
             {rdelim},
             topPosition: Y.one('#controlbar-top .box-bc').getStyle('height')

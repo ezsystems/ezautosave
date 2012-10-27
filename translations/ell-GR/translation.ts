@@ -4,7 +4,7 @@
 <context>
     <name>design/admin2/autosave</name>
     <message>
-        <source>An error occured while autosaving the draft</source>
+        <source>An error occurred while autosaving the draft</source>
         <translation>Ένα λάθος συνέβη κατά την αυτόματη αποθήκευση του προσχεδίου</translation>
     </message>
     <message>
@@ -34,7 +34,7 @@
         <translation>Φόρτωση...</translation>
     </message>
     <message>
-        <source>An error occured.</source>
+        <source>An error occurred.</source>
         <translation>Ένα λάθος συνέβη.</translation>
     </message>
     <message>
@@ -45,7 +45,7 @@
 <context>
     <name>design/ezwebin/autosave</name>
     <message>
-        <source>An error occured while autosaving the draft</source>
+        <source>An error occurred while autosaving the draft</source>
         <translation>Ένα λάθος συνέβη κατά την αυτόματη αποθήκευση του προσχεδίου</translation>
     </message>
     <message>
