@@ -13,7 +13,7 @@ YUI(YUI3_config).use('ezautosubmit', 'node-base', 'node-style', function (Y) {ld
         {rdelim}),
         messages = {ldelim}
 
-            error: "{'An error occured while autosaving the draft'|i18n( 'design/ezwebin/autosave' )|wash( 'javascript' )}",
+            error: "{'An error occurred while autosaving the draft'|i18n( 'design/ezwebin/autosave' )|wash( 'javascript' )}",
             saving: "{'The draft is being saved'|i18n( 'design/ezwebin/autosave' )|wash( 'javascript' )}"
         {rdelim},
         timer = false, place;

@@ -4,7 +4,7 @@
 <context>
     <name>design/admin2/autosave</name>
     <message>
-        <source>An error occured while autosaving the draft</source>
+        <source>An error occurred while autosaving the draft</source>
         <translation>Ocorreu um erro durante o salvamento automático do rascunho</translation>
     </message>
     <message>
@@ -34,7 +34,7 @@
         <translation>Carregando...</translation>
     </message>
     <message>
-        <source>An error occured.</source>
+        <source>An error occurred.</source>
         <translation>Ocorreu um erro.</translation>
     </message>
     <message>
@@ -45,7 +45,7 @@
 <context>
     <name>design/ezwebin/autosave</name>
     <message>
-        <source>An error occured while autosaving the draft</source>
+        <source>An error occurred while autosaving the draft</source>
         <translation>Ocorreu um erro durante o salvamento automático do rascunho</translation>
     </message>
     <message>
