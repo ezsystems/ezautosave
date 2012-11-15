@@ -9,7 +9,7 @@
     </message>
     <message>
         <source>The draft is being saved</source>
-        <translation>Le brouillon est en cours de d&apos;enregistrement</translation>
+        <translation>Le brouillon est en cours d&apos;enregistrement</translation>
     </message>
 </context>
 <context>
@@ -50,7 +50,7 @@
     </message>
     <message>
         <source>The draft is being saved</source>
-        <translation>Le brouillon est en cours de d&apos;enregistrement</translation>
+        <translation>Le brouillon est en cours d&apos;enregistrement</translation>
     </message>
 </context>
 <context>
