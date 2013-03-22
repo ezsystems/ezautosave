@@ -160,9 +160,11 @@ YUI(YUI3_config).add('ezautosubmit', function (Y) {
         var that = this,
             formState = serializeForm(this.conf.form, this.conf.ignoreClass),
             originalFormState = formState,
+            form = Y.one(this.conf.form),
+            originalFormAction = form.getAttribute('action'),
             ajaxConf = Y.clone(this.ajaxConfiguration, true);
 
-        ajaxConf.form.id = Y.one(this.conf.form);
+        ajaxConf.form.id = form;
         if ( !this.started ) {
             return;
         }
@@ -202,6 +204,12 @@ YUI(YUI3_config).add('ezautosubmit', function (Y) {
                 ajaxConf.data = fields;
             }
             this.ajax = Y.io(this.conf.action, ajaxConf);
+            // Workaround to http://yuilibrary.com/projects/yui3/ticket/2532899
+            // this and the declaration of the form and originalFormAction vars
+            // can be removed as soon as the YUI issue is fixed
+            form.setAttribute('action', originalFormAction);
+            form.removeAttribute('target');
+            // End workaround
         } else {
             this.fire('nochange');
         }
