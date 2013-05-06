@@ -1,7 +1,7 @@
 <div class="preview-header">
     <h1 class="context-title">
         <a href="#" class="close">&laquo;&nbsp;{'Back to the edit form'|i18n( 'design/admin2/content/ajax_preview' )}</a>
-        {$object.content_class.identifier|class_icon( normal, $node.class_name )}
+        {$object.content_class.identifier|class_icon( 'normal', $object.class_name )}
         {'Preview of &lt;%name&gt; in siteaccess'|i18n( 'design/admin2/content/ajax_preview', '', hash( '%name', $version.name ) )}
         <select class="no-autosave">
         {foreach $siteaccess_list as $sa}
