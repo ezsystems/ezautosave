@@ -1,0 +1,20 @@
+{
+    "name": "ezsystems/ezautosave",
+    "description": "Content editing autosave extension for eZ Publish legacy",
+    "type": "ezpublish-legacy-extension",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Quoc-Huy Nguyen Dinh",
+            "email": "contact@quoc-huy.com"
+        },
+        {
+            "name": "Damien Pobel",
+            "email": "damien.pobel@ez.no"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "ezsystems/ezpublish-legacy-installer": "*"
+    }
+}
