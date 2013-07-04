@@ -56,7 +56,6 @@ YUI(YUI3_config).add('ezcontentpreview', function (Y) {
         this.preview = preview;
 
         this._initStyles();
-        this._initEvents();
 
         this.collapsible = new Y.eZ.CollapsibleMenu({
             link: that.conf.element,
@@ -170,6 +169,7 @@ YUI(YUI3_config).add('ezcontentpreview', function (Y) {
     eZContentPreview.prototype.setContent = function (content) {
         this.place.removeClass('loading');
         this.preview.setContent(content);
+        this._setEventsHandlers();
         // adjust iframe height if the preview place is shown
         if ( this.place.hasClass('previewed') ) {
             this.place.one('iframe').transition({
@@ -214,33 +214,34 @@ YUI(YUI3_config).add('ezcontentpreview', function (Y) {
      * Initializes the events that will occur inside the preview
      *  - siteaccess change
      *  - link to return to the edit form
+     *
+     * Note: event delegation is not used mainly because the change event does
+     * not bubbled in IE < 9 and YUI does not handle this issue for now
+     * see http://yuilibrary.com/projects/yui3/ticket/2531106
      * @private
      */
-    eZContentPreview.prototype._initEvents = function () {
+    eZContentPreview.prototype._setEventsHandlers = function () {
         var that = this;
 
-        this.preview.delegate('click', function (e) {
+        this.preview.one('select').on('change', function (e) {
             var sa = e.target.get('value'),
                 iframe = that.preview.one('iframe'),
                 urlArray = iframe.get('src').split('/'),
-                currentSA = urlArray.pop();
-            if ( currentSA != sa ) {
-                var loader = that.preview.one('#iframe-loader');
-                loader.show('fadeIn');
-                urlArray.push(sa);
-                iframe.on('load', function () {
-                    loader.hide('fadeOut');
-                });
-                iframe.set('src', urlArray.join('/'));
-            }
-        },
-        'select');
+                loader = that.preview.one('#iframe-loader');
 
-        this.preview.delegate('click', function (e) {
+            loader.show('fadeIn');
+            urlArray.pop();
+            urlArray.push(sa);
+            iframe.on('load', function () {
+                loader.hide('fadeOut');
+            });
+            iframe.set('src', urlArray.join('/'));
+        });
+
+        this.preview.one('a.close').on('click', function (e) {
             that.close();
             e.preventDefault();
-        },
-        'a.close');
+        });
     }
 
     Y.eZ.ContentPreview = eZContentPreview
