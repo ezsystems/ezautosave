@@ -187,12 +187,9 @@ class ezjscServerFunctionsAutosave extends ezjscServerFunctions
         );
 
         $version->setAttribute( 'modified', time() );
-        $status = eZContentObjectVersion::STATUS_INTERNAL_DRAFT;
-        if ( $http->hasPostVariable( 'StoreExitButton' ) )
-        {
-            $status = eZContentObjectVersion::STATUS_DRAFT;
-        }
-        $version->setAttribute( 'status', $status );
+
+        // Do not use internal draft since it simulates the saving action
+        $version->setAttribute( 'status', eZContentObjectVersion::STATUS_DRAFT );
 
         $attributesToStore = array();
         foreach( $fetchResult['attribute-input-map'] as $id => $value )
