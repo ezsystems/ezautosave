@@ -12,4 +12,7 @@ TrackUserInput=enabled
 # whether to hide the Store draft button
 HideStoreDraftButton=enabled
 
+# whether to hide the preview link
+HidePreviewLink=disabled
+
 */ ?>
