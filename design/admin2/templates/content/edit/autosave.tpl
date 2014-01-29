@@ -72,6 +72,7 @@ YUI(YUI3_config).use('ezautosubmit', 'ezcontentpreview', 'node-base', 'node-styl
         preview.init();
 {/literal}
         {if ezini( 'AutosaveSettings', 'HideStoreDraftButton', 'autosave.ini' )|eq( 'enabled' )}Y.all(this.conf.form + ' input[name=StoreButton]').each(function () {ldelim} this.hide() {rdelim});{/if}
+        {if ezini( 'AutosaveSettings', 'HidePreviewLink', 'autosave.ini' )|eq( 'enabled' )}Y.all(this.conf.form + ' #preview-link').each(function () {ldelim} this.hide() {rdelim});{/if}
 {literal}
         Y.on('beforeunload', function (e) {
             setTimeout(function () {
