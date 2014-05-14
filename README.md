@@ -79,14 +79,18 @@ Example:
                                         // will not trigger an auto submit
             action: 'url/to/post/the/form/content', // should answer in JSON
             interval: 30, // number of seconds between two submit attempts
-            trackUserInput: true // boolean, whether the component should try to
-                                 // submit the form if the user leaves a field
-                                 // and has made changes
+            trackUserInput: true, // boolean, whether the component should try to
+                                  // submit the form if the user leaves a field
+                                  // and has made changes
+            enabled: function () { return true; } // optional function to
+                                                  // disable autosave in some circumstances
             });
 
         as.on('init', function () {
             // init event
             // triggered when the component is initialized
+            // if the `enabled` function returns false, this event is not
+            // triggered
             // "this" is the Y.eZ.AutoSubmit instance
         });
 
