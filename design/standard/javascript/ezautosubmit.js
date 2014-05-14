@@ -73,9 +73,12 @@ YUI(YUI3_config).add('ezautosubmit', function (Y) {
      *              - action String, the URI to POST the form
      *              - interval Integer, number of seconds between 2 auto submit attempts
      *              - trackUserInput Boolean, whether to auto submit the end user leave a form field
+     *              - enabled Function, optional function returning a boolean called when the page
+     *                is ready, allowing to disabled autosave in some circumstances
      */
     function eZAutoSubmit(conf) {
-        var that = this;
+        var that = this,
+            enableCheckFunc = conf.enabled || function () { return true; };
 
         this.conf = Y.merge(defaultConfig, conf);
         this.conf.interval = parseInt(this.conf.interval);
@@ -96,7 +99,10 @@ YUI(YUI3_config).add('ezautosubmit', function (Y) {
         this.ajaxSubscription = false;
 
         Y.on('domready', function () {
-            that.fire('init');
+            that.isEnabled = enableCheckFunc.call(that);
+            if ( that.isEnabled ) {
+                that.fire('init');
+            }
         });
 
         Y.on('autosubmit:forcesave', function () {
@@ -118,6 +124,9 @@ YUI(YUI3_config).add('ezautosubmit', function (Y) {
             return;
         }
         Y.on('domready', function () {
+            if ( !that.isEnabled ) {
+                return;
+            }
             that.timer = Y.later(that.conf.interval * 1000, that, that.submit, [], true);
             that.started = true;
             that.state = serializeForm(that.conf.form, that.conf.ignoreClass);
