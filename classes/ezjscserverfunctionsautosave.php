@@ -213,6 +213,11 @@ class ezjscServerFunctionsAutosave extends ezjscServerFunctions
         );
 
         $db->commit();
+        ezpEvent::getInstance()->notify(
+            'content/cache/version',
+            array( $contentObject->attribute( 'id' ), $version->attribute( 'version' ) )
+        );
+
         $time = eZLocale::instance()->formatShortTime(
             $version->attribute( 'modified' )
         );
