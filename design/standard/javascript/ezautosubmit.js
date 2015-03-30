@@ -78,7 +78,8 @@ YUI(YUI3_config).add('ezautosubmit', function (Y) {
      */
     function eZAutoSubmit(conf) {
         var that = this,
-            enableCheckFunc = conf.enabled || function () { return true; };
+            enableCheckFunc = conf.enabled || function () { return true; },
+            form;
 
         this.conf = Y.merge(defaultConfig, conf);
         this.conf.interval = parseInt(this.conf.interval);
@@ -88,9 +89,10 @@ YUI(YUI3_config).add('ezautosubmit', function (Y) {
         this.timer = false;
         this.started = false;
         this.state = '';
+        form = Y.one(this.conf.form);
         this.ajaxConfiguration = {
             form:{
-                id: Y.one(this.conf.form),
+                id: form,
                 upload: true
             },
             method: 'POST'
@@ -108,6 +110,9 @@ YUI(YUI3_config).add('ezautosubmit', function (Y) {
         Y.on('autosubmit:forcesave', function () {
             that.submit('AutoSubmitForced=' + new Date().getTime());
         });
+
+        Y.Global.Autosave = Y.Global.Autosave || {};
+        Y.Global.Autosave[form.get('id')] = this;
     }
 
     /**
