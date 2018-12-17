@@ -117,7 +117,9 @@ YUI(YUI3_config).use('ezautosubmit', 'ezcontentpreview', 'node-base', 'node-styl
              .addClass('as-success')
              .setContent(e.json.content.message_success + ' ' + msgAgo)
              .setAttribute('title', '');
-        preview.setContent(e.json.content.preview);
+        if( !preview.collapsible.conf.collapsed ) {
+            preview.setContent( e.json.content.preview );
+        }
         if ( timer ) {
             timer.cancel();
         }
