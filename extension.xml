@@ -2,7 +2,7 @@
 <software>
     <metadata>
         <name>eZ Autosave LS</name>
-        <version>dev-master</version>
+        <version>5.4</version>
         <copyright>Copyright (C) 2011 NGUYEN DINH Quoc-Huy, eZ Systems AS. All rights reserved.</copyright>
         <license>For full copyright and license information view LICENSE file provided with this software.</license>
         <info_url>http://projects.ez.no/ezautosave</info_url>
