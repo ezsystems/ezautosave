@@ -9,6 +9,11 @@ display:none;
 <![endif]-->
 {/literal}
 {ezscript_require( array( 'ezjsc::yui3', 'ezautosubmit.js' ) )}
+{if ezini( 'AutosaveSettings', 'HidePreviewLink', 'autosave.ini' )|eq( 'enabled' ) }
+{def $as_ajax_request = 'ezjscore/call/ezautosave::savedraft' }
+{else}
+{def $as_ajax_request = 'ezjscore/call/ezautosave::savedraftpreview' }
+{/if}
 <script type="text/javascript">
 
 YUI(YUI3_config).use('ezautosubmit', 'ezcontentpreview', 'node-base', 'node-style', function (Y) {ldelim}
@@ -17,7 +22,7 @@ YUI(YUI3_config).use('ezautosubmit', 'ezcontentpreview', 'node-base', 'node-styl
 
             form: '#editform',
             ignoreClass: 'no-autosave',
-            action: {concat( 'ezjscore/call/ezautosave::savedraftpreview::', $object.id, '::', $edit_version, '::', $edit_language, '?ContentType=javascript' )|ezurl},
+            action: {concat( $as_ajax_request, '::', $object.id, '::', $edit_version, '::', $edit_language, '?ContentType=javascript' )|ezurl},
             interval: {ezini( 'AutosaveSettings', 'Interval', 'autosave.ini' )|int()},
             trackUserInput: {cond( ezini( 'AutosaveSettings', 'TrackUserInput', 'autosave.ini')|eq( 'enabled' ), "true", "false" )},
             enabled: function () {ldelim}
